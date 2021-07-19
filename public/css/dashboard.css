@@ -1,0 +1,29 @@
+.card_title {
+    padding: 6px 16px;
+    border-top: 4px solid rgb(15, 149, 176);
+}
+
+.dashboard_edit_blog {
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    /* margin-top: calc(9vh + 0.325rem); */
+    width: 80%;
+    overflow: hidden;
+}
+
+
+/* .dashboard_content {
+    margin: -64px 0 -36px;
+    height: calc(92vh);
+} */
+
+.dashboard_controller {
+    margin-left: 5px;
+    height: 336px;
+    /* overflow-y: auto; */
+}
+
+.notice {
+    overflow-y: auto;
+}
