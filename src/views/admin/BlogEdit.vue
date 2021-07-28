@@ -152,11 +152,16 @@ export default {
       blog_raw: '',
       article_type_id: 0,
       articleType: [],
+      AVData: {
+        appId: 'Ksbznav33FsKM20tu3IJq7Hn-gzGzoHsz',
+        appKey: 'bTHubAyjhxuoe9Jq56BNtpqd',
+        serverURL: 'https://api.blog.douzi.site',
+      },
     };
   },
   inject: ['reloadNAV'],
   created() {
-    AV.init(this.$douziAPI.returnAVData);
+    AV.init(this.AVData);
   },
   mounted() {
     this.init();
@@ -184,12 +189,12 @@ export default {
         `::: hljs-center\n\n# ${title}\n` +
         time.getFullYear() +
         '-' +
-        (time.getMonth()+1) +
+        (time.getMonth() + 1) +
         '-' +
         time.getDate() +
         '\n:::\n';
       this.openDialog();
-      console.log(time.getMonth()+1);
+      console.log(time.getMonth() + 1);
     },
     editArticle(index) {
       this.title = this.data[index].title;
@@ -229,9 +234,9 @@ export default {
             /\s:::\s/.exec(this.blog_raw).index + 4,
             this.blog_raw.length
           )
-          .replace(/[\r\n]/g, ' ').replace(/!\[(.*?)\]\((.*?)\)/gi,'');
-          console.log(this.blog_article);
-
+          .replace(/[\r\n]/g, ' ')
+          .replace(/!\[(.*?)\]\((.*?)\)/gi, '');
+        console.log(this.blog_article);
       } catch (error) {
         this.blog_article = '在写了在写了.....';
       }

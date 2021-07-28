@@ -22,12 +22,6 @@ function pwdHash(pwd) {
 }
 
 const douziAPI = {
-    returnAVData: {
-        appId: "Ksbznav33FsKM20tu3IJq7Hn-gzGzoHsz",
-        appKey: "bTHubAyjhxuoe9Jq56BNtpqd",
-        serverURL: "https://api.blog.douzi.site"
-
-    },
     // 登录
     async login(email, password) {
         return axios.post(`${API_BASE_URL}/login`, { email: email, password: pwdHash(password) }, { headers: API_BASE_HEADER })
@@ -98,16 +92,6 @@ const douziAPI = {
         return axios.get(`${API_BASE_URL}/classes/article?order=-createdAt`, { headers: API_BASE_HEADER })
     },
 
-    //添加文章
-    async addArticle(data) {
-        return axios.post(`${API_BASE_URL}/classes/article`, data, { headers: API_BASE_HEADER })
-            // console.log(title + "\n" + article)
-    },
-    //编辑文章
-    async editArticle(objectId, data) {
-        return axios.put(`${API_BASE_URL}/classes/article/${objectId}`, data, { headers: API_BASE_HEADER })
-    },
-
     //根据ID获取文章
     async getArticleById(objectId) {
         return axios.get(`${API_BASE_URL}/classes/article/${objectId}`, { headers: API_BASE_HEADER })
@@ -116,6 +100,18 @@ const douziAPI = {
     async getArticleByTypeId(typeId) {
         return axios.get(`${API_BASE_URL}/classes/article?order=-createdAt&where={"article_type_id":${typeId}}`, { headers: API_BASE_HEADER })
     },
+    //添加文章
+    async addArticle(data) {
+        API_BASE_HEADER['X-LC-Session'] = window.sessionStorage.getItem("user-sessionToken")
+        return axios.post(`${API_BASE_URL}/classes/article`, data, { headers: API_BASE_HEADER })
+            // console.log(title + "\n" + article)
+    },
+    //编辑文章
+    async editArticle(objectId, data) {
+        API_BASE_HEADER['X-LC-Session'] = window.sessionStorage.getItem("user-sessionToken")
+        return axios.put(`${API_BASE_URL}/classes/article/${objectId}`, data, { headers: API_BASE_HEADER })
+    },
+
     //删除文章
     async delArticleById(objectId) {
         API_BASE_HEADER['X-LC-Session'] = window.sessionStorage.getItem("user-sessionToken")

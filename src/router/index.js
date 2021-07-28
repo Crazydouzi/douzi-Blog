@@ -1,46 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import View from '@/views/View.vue'
-// console.log(process.env.NODE_ENV)
+console.log(process.env.NODE_ENV)
 
 Vue.use(VueRouter)
 
 const routes = [{
-            path: '/',
-            component: View,
-            children: [{
-                    path: '/',
-                    name: 'Home',
-                    component: () =>
-                        import ('@/views/Home.vue'),
-                },
-                {
-                    path: 'about',
-                    name: 'About',
-                    component: () =>
-                        import ('@/views/About.vue'),
-                },
-                {
-                    path: 'blog',
-                    component: () =>
-                        import ('@/views/Blog.vue'),
-                    children: [{
-                            path: '/',
-                            name: 'Blog',
-                            props: { default: true, sidebar: false },
-                            component: () =>
-                                import ('@/views/article/ArticleList.vue'),
-                        },
-                        {
-                            path: 'p/:data',
-                            name: 'Article',
-                            component: () =>
-                                import ('@/views/article/Article.vue'),
-                        }
-                    ]
-                }
-            ]
-        }, {
+        path: '/',
+        component: View,
+        children: [{
+                path: '/',
+                name: 'Home',
+                component: () =>
+                    import ('@/views/Home.vue'),
+            },
+            {
+                path: 'about',
+                name: 'About',
+                component: () =>
+                    import ('@/views/About.vue'),
+            },
+            {
+                path: 'blog',
+                component: () =>
+                    import ('@/views/Blog.vue'),
+                children: [{
+                        path: '/:data',
+                        name: 'Blog',
+                        props: { default: true, sidebar: false },
+                        component: () =>
+                            import ('@/views/article/ArticleList.vue'),
+                    },
+                    {
+                        path: 'p/:data',
+                        name: 'Article',
+                        component: () =>
+                            import ('@/views/article/Article.vue'),
+                    }
+                ]
+            }
+        ]
+    }]
+    // 打包时不添加路由
+if (process.env.NODE_ENV == 'development') {
+    routes.push.apply(routes, [{
             path: '/admin/',
             component: View,
             redirect: '/admin/dashboard',
@@ -105,7 +108,9 @@ const routes = [{
         //     component: () =>
         //         import ('@/views/account/register.vue')
         // }
-    ]
+    ])
+}
+console.log(routes)
     //解决重复导致的导航冗余
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {

@@ -11,9 +11,7 @@
               @click="
                 $router.push({
                   name: 'Blog',
-                  query: {
-                    id: item.article_type_id,
-                  },
+                  params: { data: item.article_type_id }
                 })
               "
             >

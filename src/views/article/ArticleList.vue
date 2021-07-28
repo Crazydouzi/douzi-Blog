@@ -28,6 +28,31 @@
         </v-btn>
       </v-card-actions>
     </v-card>
+    <v-card
+      v-if="articleData.length == 0"
+      class="mx-auto article-list"
+      outlined
+      rounded="lg"
+    >
+      <v-card-title style="color:#000">
+        这个类别啥都没有
+      </v-card-title>
+      <v-card-text>
+        <p>0000-00-00</p>
+        <div class="text--primary">
+          咕咕咕咕咕
+        </div>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn
+          text
+          disabled
+          color="teal accent-4"
+        >
+          None
+        </v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 <script>
@@ -43,7 +68,7 @@ export default {
 
   methods: {
     init() {
-      this.typeId = Number(this.$route.query.id);
+      this.typeId = Number(this.$route.params.data);
       if (this.typeId || this.typeId == 0) {
         console.log(this.typeId);
         this.$douziAPI.getArticleByTypeId(this.typeId).then((r) => {
@@ -57,7 +82,7 @@ export default {
     },
   },
   watch: {
-    '$route.query.id': {
+    '$route.params.data': {
       handler: function(newval) {
         this.init();
       },
