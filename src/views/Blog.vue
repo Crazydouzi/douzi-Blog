@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="2" class="listNAV">
-        <v-sheet rounded="lg" style="position: sticky;top: 78px;">
+        <v-sheet rounded="lg" style="position: sticky;">
           <v-list color="transparent">
             <v-list-item
               v-for="item in articleType"

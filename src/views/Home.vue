@@ -1,5 +1,5 @@
 <template>
   <v-container>
-    怪哉  
+    啊哈,页面走丢了  
   </v-container> 
 </template>
