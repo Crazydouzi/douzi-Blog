@@ -8,12 +8,14 @@
         "test:unit": "vue-cli-service test:unit"
     },
     "dependencies": {
+        "@mdi/font": "^7.0.96",
         "axios": "^0.21.0",
         "core-js": "^3.6.5",
         "iframe-resizer": "^4.2.11",
         "leancloud-storage": "^4.10.1",
         "less-loader": "^5.0.0",
         "mavon-editor": "^2.9.0",
+        "mdi": "^2.2.43",
         "register-service-worker": "^1.7.1",
         "stylus-loader": "^4.1.0",
         "vue": "^2.6.11",

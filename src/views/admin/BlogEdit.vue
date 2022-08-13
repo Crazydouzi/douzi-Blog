@@ -162,6 +162,13 @@ export default {
   inject: ['reloadNAV'],
   created() {
     AV.init(this.AVData);
+    AV.User.become(window.sessionStorage.getItem("user-sessionToken")).then(user=>{
+      
+    },error=>{
+      alert("Token失效！");
+      window.sessionStorage.clear()
+       this.$router.push("/admin/dashboard");
+    })
   },
   mounted() {
     this.init();

@@ -59,5 +59,6 @@ export default {
 }
 .v-note-wrapper img{
   min-width: 360px;
+  max-width: 800px;
 }
 </style>
