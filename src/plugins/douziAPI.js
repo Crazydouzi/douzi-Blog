@@ -5,7 +5,7 @@ import axios from 'axios'
 const API_BASE_URL = 'https://api.blog.douzi.site/1.1'
     //请求头
 var API_BASE_HEADER = {
-    'X-LC-Id': 'Ksbznav33FsKM20tu3IJq7Hn-gzGzoHsz',
+    'X-LC-Id': '',
     'X-lc-Sign': sign(),
     'Content-Type': 'application/json',
 }
@@ -13,7 +13,7 @@ var API_BASE_HEADER = {
 //计算验证KEY
 function sign() {
     let t = new Date().getTime();
-    let key = md5["\x68\x65\x78\x5f\x6d\x64\x35"](t + '\x62\x54\x48\x75\x62\x41\x79\x6a\x68\x78\x75\x6f\x65\x39\x4a\x71\x35\x36\x42\x4e\x74\x70\x71\x64');
+    let key = md5["\x68\x65\x78\x5f\x6d\x64\x35"](t + '');
     return `${key},${t}`;
 }
 //密码哈希
